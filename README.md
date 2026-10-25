@@ -18,23 +18,20 @@
 
 ## 📌 Overview
 
-Pure-Python signature & IOC malware scanner (YARA-inspired rules)
+
+OYaraX is a YARA-based malware scanning and rule-management tool that applies signature rules to files and directories to detect malicious or suspicious content. It compiles and runs rule sets, reports matches with rule and string context, and supports recursive scanning. It is intended for authorized malware analysis and incident response.
 
 ---
 
 ## ✨ Features
 
-- Pure-Python rule engine with its own compact, YARA-inspired rule format (.oyx) — NOT libyara
-- Strings: text (nocase/wide/ascii/fullword), hex with ?? / nibble wildcards, jumps [n-m] and alternatives (AA|BB), regex /.../is
-- Conditions: any/all/none/N of them, sets ($a*), #count, @offset, $a at N, $a in (a..b), filesize, entropy, magic, uint8/16/32(be), and/or/not, math
-- ~30 built-in DEMO rules (webshells, reverse shells, PowerShell abuse, PE/ELF magic, UPX, miners, ...)
-- Recursive scanner — include/exclude globs, max filesize, symlink-loop guard, chunked binary-safe reads, ThreadPoolExecutor concurrency
-- MD5 / SHA1 / SHA256 + hash IOC list + string IOCs
-- Shannon entropy (whole file + sliding block max)
-- Magic-byte file type identification (40+ types)
-- Quarantine REPORT — optional copy of matches to a folder (originals are NEVER moved or deleted)
-- Save report (TXT / CSV / JSON) with location chooser
-- Full CLI mode (--path, --rules, --json, --fail-on)
+
+- YARA rule compilation and scanning of files and directories
+- Recursive directory walking with file-type and size filtering
+- Match reporting with rule name, tags and matched-string context
+- Rule-set management (load, validate, organize rules)
+- Structured export of scan results for reporting
+- Offline operation with a --self-test mode
 
 ---
 
@@ -47,8 +44,11 @@ Pure-Python signature & IOC malware scanner (YARA-inspired rules)
 
 ## 🚀 Usage
 
+
 ```bash
 ./OYaraX
+./OYaraX --self-test
+./OYaraX --help
 ```
 
 ---
